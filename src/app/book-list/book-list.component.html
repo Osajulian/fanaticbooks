@@ -1,0 +1,46 @@
+<div  class='card'>
+  <div class='card-header'>
+    {{pageTitle}}
+  </div>
+  <div class='card-body'>
+    <div class='row'>
+      <div class='col-md-2'>Search List:</div>
+      <div class='col-md-4'>
+        <input type='text' 
+        [(ngModel)]='search'/>
+      </div>
+    </div>
+    <table class='table'
+    *ngIf='books && books.length'>
+      <thead>
+        <tr>
+          <th>
+            Title
+          </th>
+          <th>
+              Description
+            </th>
+            <th>
+                Price
+              </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let book of books'>
+          <td><a [routerLink]="['/books/', book.bookID]">{{book.title}}</a></td>
+          <td>{{book.description}}</td>
+          <td>{{book.price| currency: 'USD': 'symbol': '1.2-2'}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-table></app-table>
+<!-- <div>
+  <ul>
+    <li *ngFor="let book of books">{{book.title}} <a [routerLink]="['/books/', book.bookID]">View</a></li>
+  </ul>
+
+</div> -->
